@@ -1,0 +1,41 @@
+.input-area {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.input-textarea {
+  flex: 1;
+  resize: none;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.input-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-button {
+  padding: 0 16px;
+  border-radius: 8px;
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}
+
+.input-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-button.stop {
+  background: #ef4444;
+}

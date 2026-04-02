@@ -1,0 +1,44 @@
+import { useState } from "react";
+
+interface InputAreaProps {
+  onSend: (text: string) => void;
+  onStop: () => void;
+  isLoading: boolean;
+}
+
+export const InputArea = ({ onSend, onStop, isLoading }: InputAreaProps) => {
+  const [value, setValue] = useState("");
+
+  const handleSend = () => {
+    if (!value.trim()) return;
+
+    onSend(value);
+    setValue("");
+  };
+
+  return (
+    <div className="p-3 border-t flex gap-2">
+      <textarea
+        className="flex-1 resize-none"
+        rows={1}
+        value={value}
+        disabled={isLoading}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleSend();
+          }
+        }}
+      />
+
+      {isLoading ? (
+        <button onClick={onStop}>Стоп</button>
+      ) : (
+        <button onClick={handleSend} disabled={!value.trim()}>
+          Отправить
+        </button>
+      )}
+    </div>
+  );
+};

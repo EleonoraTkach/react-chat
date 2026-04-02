@@ -1,0 +1,33 @@
+import { useState } from "react";
+import { Sidebar } from "../sidebar/Sidebar";
+import { ChatWindow } from "../chat/ChatWindow";
+import "./AppLayout.css";
+
+export const AppLayout = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="layout">
+      {/* Sidebar */}
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+        <Sidebar />
+      </aside>
+
+      {/* Overlay (для мобилки) */}
+      {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
+
+      {/* Chat */}
+      <main className="chat">
+        {/* Бургер */}
+        <button
+          className="burger"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          ☰
+        </button>
+
+        <ChatWindow />
+      </main>
+    </div>
+  );
+};

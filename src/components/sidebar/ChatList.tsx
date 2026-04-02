@@ -1,0 +1,20 @@
+import {ChatItem} from "./ChatItem";
+
+type ChatListProps = {
+  chats: Chat[];
+  activeId: number;
+};
+
+export const ChatList = ({ chats, activeId }: ChatListProps) => {
+  return (
+    <div className="chat-list">
+      {chats.map(chat => (
+        <ChatItem
+          key={chat.id}
+          chat={chat}
+          isActive={chat.id === activeId}
+        />
+      ))}
+    </div>
+  );
+};

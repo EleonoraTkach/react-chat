@@ -1,0 +1,17 @@
+import { useState } from "react";
+
+export const SearchInput = () => {
+  const [value, setValue] = useState("");
+
+  return (
+    <div className="relative">
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Поиск чатов..."
+        className="SearchInput"
+      />
+    </div>
+  );
+};
